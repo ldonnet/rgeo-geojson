@@ -1,9 +1,9 @@
 # -----------------------------------------------------------------------------
 #
-# Version of rgeo-geojson
+# RGeo::GeoJSON Gemspec
 #
 # -----------------------------------------------------------------------------
-# Copyright 2010-2012 Daniel Azuma
+# Copyright 2011-2012 Daniel Azuma
 #
 # All rights reserved.
 #
@@ -33,24 +33,21 @@
 # -----------------------------------------------------------------------------
 ;
 
-
-begin
-  require 'versionomy'
-rescue ::LoadError
-end
-
-
-module RGeo
-
-  module GeoJSON
-
-    # Current version of RGeo::GeoJSON as a frozen string
-    VERSION_STRING = ::File.read(::File.dirname(__FILE__)+'/../../../Version').strip.freeze
-
-    # Current version of RGeo::GeoJSON as a Versionomy object, if the
-    # Versionomy gem is available; otherwise equal to VERSION_STRING.
-    VERSION = defined?(::Versionomy) ? ::Versionomy.parse(VERSION_STRING) : VERSION_STRING
-
-  end
-
+::Gem::Specification.new do |s_|
+  s_.name = 'rgeo-kml'
+  s_.summary = 'An RGeo module providing KML encoding and decoding.'
+  s_.description = "RGeo is a geospatial data library for Ruby. RGeo::Kml is an optional RGeo module providing KML encoding and decoding services. This module can be used to communicate with location-based web services that understand the KML format."
+  s_.version = "#{::File.read('Version').strip}.nonrelease"
+  s_.author = 'Luc Donnet'
+  s_.email = 'luc.donnet@free.fr'
+  s_.homepage = "http://ldonnet.github.com/rgeo-kml"
+  s_.required_ruby_version = '>= 1.8.7'
+  s_.files = ::Dir.glob("lib/**/*.rb") +
+    ::Dir.glob("test/**/*.rb") +
+    ::Dir.glob("*.rdoc") +
+    ['Version']
+  s_.extra_rdoc_files = ::Dir.glob("*.rdoc")
+  s_.test_files = ::Dir.glob("test/**/tc_*.rb")
+  s_.platform = ::Gem::Platform::RUBY
+  s_.add_dependency('rgeo', '>= 0.3.13')
 end

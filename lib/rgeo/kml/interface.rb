@@ -36,28 +36,28 @@
 
 module RGeo
 
-  module GeoJSON
+  module Kml
 
     class << self
 
 
-      # High-level convenience routine for encoding an object as GeoJSON.
+      # High-level convenience routine for encoding an object as Kml.
       # Pass the object, which may one of the geometry objects specified
-      # in RGeo::Feature, or an appropriate GeoJSON wrapper entity such
-      # as RGeo::GeoJSON::Feature or RGeo::GeoJSON::FeatureCollection.
+      # in RGeo::Feature, or an appropriate Kml wrapper entity such
+      # as RGeo::Kml::Feature or RGeo::Kml::FeatureCollection.
       #
       # The only option supported is <tt>:entity_factory</tt>, which lets
-      # you override the types of GeoJSON entities supported. See
-      # RGeo::GeoJSON::EntityFactory for more information. By default,
-      # encode supports objects of type RGeo::GeoJSON::Feature and
-      # RGeo::GeoJSON::FeatureCollection.
+      # you override the types of Kml entities supported. See
+      # RGeo::Kml::EntityFactory for more information. By default,
+      # encode supports objects of type RGeo::Kml::Feature and
+      # RGeo::Kml::FeatureCollection.
 
       def encode(object_, opts_={})
         Coder.new(opts_).encode(object_)
       end
 
 
-      # High-level convenience routine for decoding an object from GeoJSON.
+      # High-level convenience routine for decoding an object from Kml.
       # The input may be a JSON hash, a String, or an IO object from which
       # to read the JSON string.
       #
@@ -68,10 +68,10 @@ module RGeo
       #   Defaults to the preferred cartesian factory.
       # [<tt>:entity_factory</tt>]
       #   Specifies an entity factory, which lets you override the types
-      #   of GeoJSON entities that are created. It defaults to the default
-      #   RGeo::GeoJSON::EntityFactory, which generates objects of type
-      #   RGeo::GeoJSON::Feature or RGeo::GeoJSON::FeatureCollection.
-      #   See RGeo::GeoJSON::EntityFactory for more information.
+      #   of Kml entities that are created. It defaults to the default
+      #   RGeo::Kml::EntityFactory, which generates objects of type
+      #   RGeo::Kml::Feature or RGeo::Kml::FeatureCollection.
+      #   See RGeo::Kml::EntityFactory for more information.
       # [<tt>:json_parser</tt>]
       #   Specifies a JSON parser to use when decoding a String or IO
       #   object. The value may be a Proc object taking the string as the
@@ -89,9 +89,9 @@ module RGeo
       end
 
 
-      # Creates and returns a coder object of type RGeo::GeoJSON::Coder
+      # Creates and returns a coder object of type RGeo::Kml::Coder
       # that encapsulates encoding and decoding settings (principally the
-      # RGeo::Feature::Factory and the RGeo::GeoJSON::EntityFactory to be
+      # RGeo::Feature::Factory and the RGeo::Kml::EntityFactory to be
       # used).
       #
       # The geo factory is a required argument. Other options include:
@@ -101,10 +101,10 @@ module RGeo
       #   Defaults to the preferred cartesian factory.
       # [<tt>:entity_factory</tt>]
       #   Specifies an entity factory, which lets you override the types
-      #   of GeoJSON entities that are created. It defaults to the default
-      #   RGeo::GeoJSON::EntityFactory, which generates objects of type
-      #   RGeo::GeoJSON::Feature or RGeo::GeoJSON::FeatureCollection.
-      #   See RGeo::GeoJSON::EntityFactory for more information.
+      #   of Kml entities that are created. It defaults to the default
+      #   RGeo::Kml::EntityFactory, which generates objects of type
+      #   RGeo::Kml::Feature or RGeo::Kml::FeatureCollection.
+      #   See RGeo::Kml::EntityFactory for more information.
       # [<tt>:json_parser</tt>]
       #   Specifies a JSON parser to use when decoding a String or IO
       #   object. The value may be a Proc object taking the string as the

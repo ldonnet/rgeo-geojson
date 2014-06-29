@@ -37,7 +37,6 @@
 # Dependencies
 require 'rgeo'
 
-
 # RGeo is a spatial data library for Ruby, provided by the "rgeo" gem.
 #
 # The optional RGeo::GeoJSON module provides a set of tools for GeoJSON
@@ -46,10 +45,10 @@ require 'rgeo'
 module RGeo
 
 
-  # This is a namespace for a set of tools that provide GeoJSON encoding.
-  # See http://geojson.org/ for more information about this specification.
+  # This is a namespace for a set of tools that provide KML encoding.
+  # See https://developers.google.com/kml/documentation/ for more information about this specification.
 
-  module GeoJSON
+  module Kml
   end
 
 
@@ -57,7 +56,7 @@ end
 
 
 # Implementation files
-require 'rgeo/geo_json/version'
-require 'rgeo/geo_json/entities'
-require 'rgeo/geo_json/coder'
-require 'rgeo/geo_json/interface'
+require 'rgeo/kml/version'
+require 'rgeo/kml/entities'
+require 'rgeo/kml/coder'
+require 'rgeo/kml/interface'
