@@ -29,9 +29,11 @@ RGeo::Kml has the following requirements:
 
 Install RGeo::Kml as a gem:
 
+```sh
  gem install rgeo
  gem install rgeo-kml
-
+ ```
+ 
 See the README for the "rgeo" gem, a required dependency, for further
 installation information.
 
