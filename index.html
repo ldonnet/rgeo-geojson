@@ -1,84 +1,111 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-us">
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="RGeo::GeoJSON : RGeo component for reading and writing GeoJSON" />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>RGeo::GeoJSON</title>
+    <meta charset="UTF-8">
+    <title>RGeo::Kml by ldonnet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
+    <section class="page-header">
+      <h1 class="project-name">RGeo::Kml</h1>
+      <h2 class="project-tagline">RGeo component for reading and writing KML</h2>
+      <a href="https://github.com/ldonnet/rgeo-kml" class="btn">View on GitHub</a>
+      <a href="https://github.com/ldonnet/rgeo-kml/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/ldonnet/rgeo-kml/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/dazuma/rgeo-geojson">View on GitHub</a>
+    <section class="main-content">
+      <h1>
+<a id="rgeokml" class="anchor" href="#rgeokml" aria-hidden="true"><span class="octicon octicon-link"></span></a>RGeo::Kml</h1>
 
-          <h1 id="project_title">RGeo::GeoJSON</h1>
-          <h2 id="project_tagline">RGeo component for reading and writing GeoJSON</h2>
+<p><a href="http://travis-ci.org/ldonnet/rgeo-kml?branch=master"><img src="https://travis-ci.org/ldonnet/rgeo-kml.png" alt="Build Status"></a> <a href="https://gemnasium.com/ldonnet/rgeo-kml"><img src="https://gemnasium.com/ldonnet/rgeo-kml.png" alt="Dependency Status"></a> <a href="https://codeclimate.com/github/ldonnet/rgeo-kml"><img src="https://codeclimate.com/github/ldonnet/rgeo-kml.png" alt="Code Climate"></a></p>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/dazuma/rgeo-geojson/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/dazuma/rgeo-geojson/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+<p>RGeo::Kml is an optional module for <a href="https://github.com/rgeo/rgeo">RGeo</a>
+that provides Kml encoding and decoding services.</p>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <p><a href="http://dazuma.github.com/rgeo">RGeo</a> is a key component for writing location-aware applications in the Ruby programming language. At its core is an implementation of the industry standard OGC Simple Features Specification, which provides data representations of geometric objects such as points, lines, and polygons, along with a set of geometric analysis operation.</p>
+<h2>
+<a id="summary" class="anchor" href="#summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary</h2>
 
-<p>RGeo::GeoJSON is an optional RGeo add-on module that provides GeoJSON encoding and decoding services. GeoJSON is an emerging standard format used by many web services that need to communicate geospatial data. See <a href="http://www.geojson.com/">www.geojson.com</a> for more information.</p>
+<p>\RGeo is a key component for writing location-aware applications in the
+Ruby programming language. At its core is an implementation of the
+industry standard OGC Simple Features Specification, which provides data
+representations of geometric objects such as points, lines, and polygons,
+along with a set of geometric analysis operations. See the README for the
+"rgeo" gem for more information.</p>
 
-<p>Example:</p>
+<p>RGeo::Kml is an optional \RGeo add-on module that provides Kml
+encoding and decoding services. Kml is a format
+used by many web services that need to communicate geospatial data. See
+<a href="https://developers.google.com/kml/documentation/">https://developers.google.com/kml/documentation/</a> for more information.</p>
 
-<div class="highlight">
-<pre><span class="nb">require</span> <span class="s1">'rgeo/geo_json'</span>
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-<span class="n">str1</span> <span class="o">=</span> <span class="s1">'{"type":"Point","coordinates":[1,2]}'</span>
-<span class="n">geom</span> <span class="o">=</span> <span class="no">RGeo</span><span class="o">::</span><span class="no">GeoJSON</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">str1</span><span class="p">,</span> <span class="ss">:json_parser</span> <span class="o">=&gt;</span> <span class="ss">:json</span><span class="p">)</span>
-<span class="n">geom</span><span class="o">.</span><span class="n">as_text</span>              <span class="c1"># =&gt; "POINT(1.0 2.0)"</span>
-
-<span class="n">str2</span> <span class="o">=</span> <span class="s1">'{"type":"Feature","geometry":{"type":"Point","coordinates":[2.5,4.0]},"properties":{"color":"red"}}'</span>
-<span class="n">feature</span> <span class="o">=</span> <span class="no">RGeo</span><span class="o">::</span><span class="no">GeoJSON</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">str2</span><span class="p">,</span> <span class="ss">:json_parser</span> <span class="o">=&gt;</span> <span class="ss">:json</span><span class="p">)</span>
-<span class="n">feature</span><span class="o">[</span><span class="s1">'color'</span><span class="o">]</span>          <span class="c1"># =&gt; 'red'</span>
-<span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">as_text</span>  <span class="c1"># =&gt; "POINT(2.5 4.0)"</span>
-
-<span class="nb">hash</span> <span class="o">=</span> <span class="no">RGeo</span><span class="o">::</span><span class="no">GeoJSON</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
-<span class="nb">hash</span><span class="o">.</span><span class="n">to_json</span> <span class="o">==</span> <span class="n">str2</span>      <span class="c1"># =&gt; true</span>
-</pre>
-</div>
-
-
-<p>For more information:</p>
+<p>RGeo::Kml has the following requirements:</p>
 
 <ul>
-<li>See the <a href="http://dazuma.github.com/rgeo-geojson/rdoc">documentation</a>
-</li>
-<li>Source code on <a href="http://github.com/dazuma/rgeo-geojson">Github</a>
-</li>
-<li>Report issues <a href="http://github.com/dazuma/rgeo-geojson/issues">here</a>
-</li>
-<li>Questions? Ask on the <a href="http://groups.google.com/group/rgeo-users">mailing list</a>
-</li>
+<li>Ruby 1.9.2 or later.</li>
+<li>rgeo 0.3.13 or later.</li>
 </ul>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">RGeo::GeoJSON maintained by <a href="https://github.com/dazuma">dazuma</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+<p>Install RGeo::Kml as a gem:</p>
+
+<div class="highlight highlight-sh"><pre> gem install rgeo
+ gem install rgeo-kml</pre></div>
+
+<p>See the README for the "rgeo" gem, a required dependency, for further
+installation information.</p>
+
+<h2>
+<a id="development-and-support" class="anchor" href="#development-and-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Development and support</h2>
+
+<p>More information can be found on the <a href="http://github.com/ldonnet/rgeo-kml">project website on GitHub</a>. 
+There is extensive usage documentation available <a href="https://github.com/ldonnet/rgeo-kml/wiki">on the wiki</a>.</p>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example:</h2>
+
+<h3>
+<a id="decode-kml" class="anchor" href="#decode-kml" aria-hidden="true"><span class="octicon octicon-link"></span></a>Decode KML</h3>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">require</span> <span class="pl-s"><span class="pl-pds">'</span>rgeo/kml<span class="pl-pds">'</span></span>
+str1 <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>{"type":"Point","coordinates":[1,2]}<span class="pl-pds">'</span></span>
+geom <span class="pl-k">=</span> <span class="pl-c1">RGeo</span>::<span class="pl-c1">Kml</span>.decode(str1, <span class="pl-c1">:json_parser</span> =&gt; <span class="pl-c1">:json</span>)
+geom.as_text              <span class="pl-c"># =&gt; "POINT(1.0 2.0)"</span>
+str2 <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>{"type":"Feature","geometry":{"type":"Point","coordinates":[2.5,4.0]},"properties":{"color":"red"}}<span class="pl-pds">'</span></span>
+feature <span class="pl-k">=</span> <span class="pl-c1">RGeo</span>::<span class="pl-c1">Kml</span>.decode(str2, <span class="pl-c1">:json_parser</span> =&gt; <span class="pl-c1">:json</span>)
+feature[<span class="pl-s"><span class="pl-pds">'</span>color<span class="pl-pds">'</span></span>]          <span class="pl-c"># =&gt; 'red'</span>
+feature.geometry.as_text  <span class="pl-c"># =&gt; "POINT(2.5 4.0)"</span></pre></div>
+
+<h3>
+<a id="encode-in-kml" class="anchor" href="#encode-in-kml" aria-hidden="true"><span class="octicon octicon-link"></span></a>Encode in KML</h3>
+
+<div class="highlight highlight-ruby"><pre>hash <span class="pl-k">=</span> <span class="pl-c1">RGeo</span>::<span class="pl-c1">Kml</span>.encode(feature)
+hash.to_json <span class="pl-k">==</span> str2      <span class="pl-c"># =&gt; true</span></pre></div>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>This project is licensed under the MIT license, a copy of which can be found in the LICENSE file.</p>
+
+<h2>
+<a id="support" class="anchor" href="#support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support</h2>
+
+<p>Users looking for support should file an issue on the GitHub issue tracking page (<a href="https://github.com/ldonnet/rgeo-kml/issues">https://github.com/ldonnet/rgeo-kml/issues</a>), or file a pull request (<a href="https://github.com/ldonnet/rgeo-kml/pulls">https://github.com/ldonnet/rgeo-kml/pulls</a>) if you have a fix available.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/ldonnet/rgeo-kml">RGeo::Kml</a> is maintained by <a href="https://github.com/ldonnet">ldonnet</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
 
-    
+    </section>
 
+  
   </body>
 </html>
+
