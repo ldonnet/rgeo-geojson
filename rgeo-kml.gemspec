@@ -12,7 +12,7 @@
   s_.author = 'Luc Donnet'
   s_.email = 'luc.donnet@free.fr'
   s_.homepage = "http://ldonnet.github.com/rgeo-kml"
-  s.licenses    = ['MIT']
+  s_.licenses = ['MIT']
   s_.required_ruby_version = '>= 1.9.3'
   s_.files = ::Dir.glob("lib/**/*.rb") +
     ::Dir.glob("test/**/*.rb") +
