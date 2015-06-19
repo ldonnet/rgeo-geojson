@@ -8,14 +8,14 @@ that provides Kml encoding and decoding services.
 Summary
 ------------
 
-\RGeo is a key component for writing location-aware applications in the
+RGeo is a key component for writing location-aware applications in the
 Ruby programming language. At its core is an implementation of the
 industry standard OGC Simple Features Specification, which provides data
 representations of geometric objects such as points, lines, and polygons,
 along with a set of geometric analysis operations. See the README for the
 "rgeo" gem for more information.
 
-RGeo::Kml is an optional \RGeo add-on module that provides Kml
+RGeo::Kml is an optional RGeo add-on module that provides Kml
 encoding and decoding services. Kml is a format
 used by many web services that need to communicate geospatial data. See
 https://developers.google.com/kml/documentation/ for more information.

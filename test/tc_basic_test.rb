@@ -61,7 +61,7 @@ module RGeo
 
         def test_nil
           assert_nil(::RGeo::Kml.encode(nil))
-          #assert_nil(::RGeo::Kml.decode(nil, :geo_factory => @geo_factory))
+          assert_nil(::RGeo::Kml.decode(nil, :geo_factory => @geo_factory))
         end
 
 
@@ -70,7 +70,7 @@ module RGeo
           kml_ = "<Point>\n<coordinates>10.0,20.0</coordinates>\n</Point>\n"
 
           assert_equal(kml_, ::RGeo::Kml.encode(object_))
-          #assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory).eql?(object_))
+          assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory) == object_ )
         end
 
 
@@ -81,7 +81,7 @@ module RGeo
 </Point>\n"
           
           assert_equal(kml_, ::RGeo::Kml.encode(object_))
-          #assert(::RGeo::Kml.decode(json_, :geo_factory => @geo_factory_z).eql?(object_))
+          assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory_z).equals?(object_))
         end
 
 
@@ -116,7 +116,7 @@ module RGeo
 </LineString>\n"
 
           assert_equal(kml_, ::RGeo::Kml.encode(object_))
-          #assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory).eql?(object_))
+          assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory) == object_ )
         end
 
 
@@ -130,9 +130,9 @@ module RGeo
 10.0,20.0
 </coordinates></LinearRing></outerBoundaryIs>
 </Polygon>\n"
-          
+
           assert_equal(kml_, ::RGeo::Kml.encode(object_))
-          #assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory).eql?(object_))
+          assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory) == object_ )
         end
 
 
@@ -156,7 +156,7 @@ module RGeo
 </Polygon>\n"
           
           assert_equal(kml_, ::RGeo::Kml.encode(object_))
-          #assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory).eql?(object_))
+          assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory) == object_ )
         end
 
 
@@ -176,7 +176,7 @@ module RGeo
 </MultiGeometry>\n"
 
           assert_equal(kml_, ::RGeo::Kml.encode(object_))
-          #assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory).eql?(object_))
+          assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory) == object_ )
         end
 
 
@@ -198,7 +198,7 @@ module RGeo
 </LineString>
 </MultiGeometry>\n"
           assert_equal(kml_, ::RGeo::Kml.encode(object_))
-          #assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory).eql?(object_))
+          assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory) == object_ )
         end
 
 
@@ -230,37 +230,26 @@ module RGeo
 </Polygon>
 </MultiGeometry>\n"
           assert_equal(kml_, ::RGeo::Kml.encode(object_))
-          #assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory).eql?(object_))
+          assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory) == object_ )
         end
 
 
-      #   def test_geometry_collection
-      #     object_ = @geo_factory.collection([@geo_factory.point(10, 20), @geo_factory.collection([@geo_factory.point(12, 22), @geo_factory.point(-3, 24)])])
-      #     kml_ = {
-      #       'type' => 'GeometryCollection',
-      #       'geometries' => [
-      #         {
-      #           'type' => 'Point',
-      #           'coordinates' => [10.0, 20.0],
-      #         },
-      #         {
-      #           'type' => 'GeometryCollection',
-      #           'geometries' => [
-      #             {
-      #               'type' => 'Point',
-      #               'coordinates' => [12.0, 22.0],
-      #             },
-      #             {
-      #               'type' => 'Point',
-      #               'coordinates' => [-3.0, 24.0],
-      #             },
-      #           ],
-      #         },
-      #       ],
-      #     }
-      #     assert_equal(kml_, ::RGeo::Kml.encode(object_))
-      #     assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory).eql?(object_))
-      #   end
+        def test_geometry_collection
+          object_ = @geo_factory.collection([@geo_factory.point(10, 20), @geo_factory.line_string([@geo_factory.point(12, 22), @geo_factory.point(-3, 24)])])
+          kml_ = "<MultiGeometry>
+<Point>
+<coordinates>10.0,20.0</coordinates>
+</Point>
+<LineString>
+<coordinates>
+12.0,22.0
+-3.0,24.0
+</coordinates>
+</LineString>
+</MultiGeometry>\n"
+          assert_equal(kml_, ::RGeo::Kml.encode(object_))
+          assert(::RGeo::Kml.decode(kml_, :geo_factory => @geo_factory) == object_ )
+        end
 
 
       #   def test_feature
