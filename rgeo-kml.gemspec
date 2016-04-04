@@ -8,7 +8,7 @@
   s_.name = 'rgeo-kml'
   s_.summary = 'An RGeo module providing KML encoding and decoding.'
   s_.description = "RGeo is a geospatial data library for Ruby. RGeo::Kml is an optional RGeo module providing KML encoding and decoding services. This module can be used to communicate with location-based web services that understand the KML format."
-  s_.version = "#{::File.read('Version').strip}.nonrelease"
+  s_.version = "#{::File.read('Version').strip}"
   s_.author = 'Luc Donnet'
   s_.email = 'luc.donnet@free.fr'
   s_.homepage = "http://ldonnet.github.com/rgeo-kml"
